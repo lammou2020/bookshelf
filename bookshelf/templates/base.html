@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>assetMng - Python on Google Cloud Platform</title>
+    <title>BookShelf - Python on Local Platform</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -16,11 +16,11 @@
           <li><a href="/"><span class="glyphicon">&#xe021</span></a></li>
           <li><a href="/books">books</a></li>
           <li><a href="/books/mine">mine</a></li>
+          <li><a href="https://github.com/lammou2020/bookshelf">[code.v2015]</a></li>
         </ul>
         {# [START profile] #}
         <p class="navbar-text navbar-right">
         {% if session.profile %}
-          <!-- a href="#/logout" -->
           <a href="/logout">
             {% if session.profile.image %}
               <img class="img-circle" src="{{session.profile.image.url}}" width="24">
@@ -28,7 +28,6 @@
             {{session.profile.user}}
           </a>
         {% else %}
-          <!-- a href="/oauth2authorize">Login</a -->
           <a href="/login">Login</a>
         {% endif %}
         </p>

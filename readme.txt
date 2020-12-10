@@ -4,18 +4,29 @@ import os
 
 MAX_CONTENT_LENGTH = 8 * 1024 * 1024
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-UPLOAD_FOLDER="/IMAGEPATH/"
+# upload imag path
+UPLOAD_FOLDER=os.getcwd()+"/IMAGEPATH/"
 SECRET_KEY = 'catcat'
 SESSION_COOKIE_NAME='connect.sid'
+#mysql_setting
 DATA_BACKEND = 'mysql'
 MYSQL_HOST='127.0.0.1'
 MYSQL_USER = ''
 MYSQL_PASSWORD = ''
 MYSQL_DATABASE = 'bookshelf'
-SQLALCHEMY_DATABASE_URI = (
+#sqlite_setting
+SQLITE_PATH=os.getcwd()+"\\bookshelf.db"
+SQLALCHEMY_SQLITE_URI = ( 'sqlite:///{path}').format(path=SQLITE_PATH)
+SQLALCHEMY_MYSQL_URI = (
     'mysql+pymysql://{user}:{password}@{host}:3306/{database}').format(
         user=MYSQL_USER, password=MYSQL_PASSWORD,host=MYSQL_HOST,
         database=MYSQL_DATABASE)
+#DATA_BACKEND{sqlite mysql}        
+DATA_BACKEND = 'sqlite'
+if DATA_BACKEND=='mysql':
+    SQLALCHEMY_DATABASE_URI = SQLALCHEMY_MYSQL_URI
+else:
+    SQLALCHEMY_DATABASE_URI = SQLALCHEMY_SQLITE_URI
 
 #end config.py
 
